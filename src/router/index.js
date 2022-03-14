@@ -11,41 +11,64 @@ const router = new VueRouter({
     {
       path: "/reg",
       name: "Register",
+      showFooter: false,
       component: () => import("../pages/register"),
     },
     {
       path: "/cart",
       name: "Cart",
+      meta: {
+        showFooter: true,
+      },
       component: () => import("../pages/cart"),
     },
     {
       path: "/mine",
       name: "Mine",
+      meta: {
+        showFooter: true,
+      },
       component: () => import("../pages/mine"),
     },
     {
       path: "/login",
       name: "Login",
+      meta: {
+        showFooter: false,
+      },
       component: () => import("../pages/login"),
     },
     {
       path: "/fenlei",
       name: "Fenlei",
+      meta: {
+        showFooter: true,
+      },
       component: () => import("../pages/fenlei"),
     },
     {
       path: "/order",
       name: "Order",
+      meta: {
+        showFooter: false,
+      },
       component: () => import("../pages/order"),
     },
     {
       path: "/detail",
       name: "Detail",
+
+      meta: {
+        showFooter: false,
+      },
       component: () => import("../pages/detail"),
     },
     {
       path: "/home",
       name: "Home",
+      meta: {
+        showFooter: true,
+      },
       component: () => import("../pages/home"),
     },
   ],
