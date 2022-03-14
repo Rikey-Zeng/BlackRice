@@ -2,7 +2,7 @@ import axios from "axios";
 import { Notify } from "vant";
 import { getToken } from "./auth";
 const instance = axios.create({
-  baseURL: "http://lanlianhua.work:3009",
+  baseURL: "http://122.9.155.12:3009",
   timeout: 5000,
 });
 // Add a request interceptor
