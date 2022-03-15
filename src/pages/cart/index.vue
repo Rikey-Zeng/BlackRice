@@ -310,10 +310,10 @@ body {
   padding-bottom: 40px;
 }
 .numcart {
-  margin-top: 11px;
+  margin-top: 21px;
   float: left;
   width: 80px;
-  margin-left: 13px;
+  margin-left: 21px;
 }
 .goods-card {
   margin: 0;
@@ -343,6 +343,7 @@ body {
   height: 30px;
   margin-top: 10px;
   margin-left: 10px;
+  line-height: 17px;
 }
 .goods-info p:nth-child(2) {
   float: left;
