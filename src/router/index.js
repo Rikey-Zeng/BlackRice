@@ -55,7 +55,7 @@ const router = new VueRouter({
       component: () => import("../pages/order"),
     },
     {
-      path: "/detail",
+      path: "/detail/:id",
       name: "Detail",
 
       meta: {
