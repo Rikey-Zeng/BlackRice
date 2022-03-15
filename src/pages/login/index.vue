@@ -1,5 +1,16 @@
 <template>
   <div class="login">
+    <span class="title1" @click="onClicktitle1"></span>
+    <van-nav-bar
+      left-text="返回首页"
+      right-text="需要帮助"
+      left-arrow
+      @click-left="onClickLeft"
+      @click-right="onClickRight"
+    />
+    <div class="center">
+      <img src="./img/3.png" alt="" />
+    </div>
     <van-form @submit="onSubmit">
       <van-field
         v-model="username"
@@ -30,6 +41,7 @@
 import { reqLogin } from "../../api/user";
 import { Notify } from "vant";
 import { setToken } from "../../utils/auth";
+
 export default {
   data() {
     return {
@@ -58,16 +70,27 @@ export default {
     zhuce() {
       this.$router.push("/reg");
     },
+    onClickLeft() {
+      this.$router.push("/home");
+    },
+    onClickRight() {
+      //   Toast("按钮");
+      this.$router.push("/police");
+    },
+    onClicktitle1() {
+      this.$router.push("/help");
+    },
   },
   created() {},
   mounted() {},
   components: {},
 };
 </script>
-<style>
+<style scoped>
 .center {
-  color: grey;
   width: 150px;
-  margin: 0 auto;
+  height: 120px;
+  margin: 40px auto;
+  color: grey;
 }
 </style>
