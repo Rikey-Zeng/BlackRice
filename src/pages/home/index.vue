@@ -33,12 +33,16 @@
       </a>
     </div>
     <!-- 精品优选 -->
-    <div class="jingpin_box">
-     <div class="sm_jingpin" v-for="(item,index) in banners.slice(0,4)" :key="item._id+index"  @click="godetail(item._id)" >
+     <div class="shangxin_box">
+      <div class="con-shangxin">
+
+    <div class="box_shangxin">
+      <div class="sm_jingpin" v-for="(item,index) in banners" :key="item._id+index"  @click="godetail(item._id)" >
      <img :src="item.coverImg" alt="">
      <p>{{item.name}}</p>
      <span>￥{{item.price}}</span>
      </div>
+    </div></div>
     </div>
   
   <!-- 众筹 -->
@@ -69,9 +73,53 @@
 </div>
  </div>
     <!--上新精选  -->
-    <div style="height:100px">
-
+    <div class="shangxin_box">
+      <div class="con-shangxin">
+   <div class="shangxin_header">上新精选<span style="float:right;font-size:12px">更多<van-icon name="arrow" /></span></div>
+    <div class="box_shangxin">
+      <div class="sm_jingpin" v-for="(item,index) in banners" :key="item._id+index"  @click="godetail(item._id)" >
+     <img :src="item.coverImg" alt="">
+     <p>{{item.name}}</p>
+     <span>￥{{item.price}}</span>
+     </div>
+    </div></div>
     </div>
+    <!--  -->
+    <van-notice-bar
+  left-icon="volume-o"
+  text="在代码阅读过程中人们说脏话的频率是衡量代码质量的唯一标准。"
+/>
+    <!--有品秒杀  -->
+    <div class="shangxin_box">
+  <div class="con-shangxin">
+    <!-- 顶部 -->
+   <div class="shangxin_header">有品秒杀
+     <!-- 倒计时 -->
+    <van-count-down :time="time">
+  <template #default="timeData">
+    <span class="block">{{ timeData.hours }}</span>
+    <span class="colon">:</span>
+    <span class="block">{{ timeData.minutes }}</span>
+    <span class="colon">:</span>
+    <span class="block">{{ timeData.seconds }}</span>
+  </template>
+</van-count-down>
+     <!-- 右侧 -->
+     <span style="float:right;font-size:12px">更多<van-icon name="arrow" /></span>
+     </div>
+    <div class="box_shangxin">
+      <div class="sm_jingpin" v-for="(item,index) in banners" :key="item._id+index"  @click="godetail(item._id)" >
+     <img :src="item.coverImg" alt="">
+     <p>{{item.name}}</p>
+     <span style="width:100%">￥{{item.price}}</span>
+     </div>
+    </div></div>
+    </div>
+    <!-- 最后空白 -->
+    <div class="di">
+ <van-divider style=";margin:0;display:block;line-height:50px;text-align:center;;">更多好物，敬请期待</van-divider>
+    </div>
+   
     </div>
 </template>
 
@@ -85,6 +133,7 @@ export default {
   data() {
     return {
        banners:[],
+        time: 70 * 60 * 60 * 1000,
     };
   },
   computed: {
@@ -118,12 +167,13 @@ export default {
 <style scoped>
 
 .logo_youpin{
+  
     color: #fff;
     display: flex;
     width: 10%;
-    height: 30.6133px;
+    height: 32.6133px;
     margin-left: 13.12px;
-    
+ 
 }
 .logo_input{
     width:100%;
@@ -137,15 +187,17 @@ export default {
 .header_one{
   display: flex;
   width: 100%;
-  height: 31px;
+  height: 51px;
   padding: 10px;
   background-color: rgb(132,93,50);
+ box-sizing: border-box;
    
 }
 .input_box{
   position: relative;
   width: 75%;
   height: 40px;
+
 }
 .loho_icon{
   position: absolute;
@@ -201,21 +253,25 @@ background-color: aqua;
   }
   /* 精品优选 */
   .jingpin_box{
-    width: 100%;
-    height: 145px;
+  
+    height: 155px;
     background-color: #f4f4f4;
     padding: 15px;
     display: flex;
-  margin-top: -5px;
-    
+    margin-top: -4px;
+    box-sizing: border-box;
+    width: auto;
+   overflow-x: auto;
+   white-space:nowrap;
   }
   .sm_jingpin{
     background-color: #fff;
-    width: 22%;
-    margin: .8%;
+    width: 23%;
+    margin: 1%;
     height: 131px;
     text-align: center;
-    border-radius: 10px;
+    /* border-radius: 10px; */
+    
   }
   .sm_jingpin img{
     width:100%;
@@ -241,7 +297,7 @@ color: #fff;
 .box_zhongchou{
   background-color: #f4f4f4;
   width: 100%;
-  height: 225px;
+  height: 195px;
   box-sizing: border-box;
   padding:0 16px;
 }
@@ -250,6 +306,8 @@ color: #fff;
   background-color: #fff;
   height: 200px;
   border-radius: 10px;
+  box-sizing: border-box;
+
 }
 /* 左边 */
 .box_zccon_r {
@@ -337,4 +395,57 @@ float: left;
 background-color: #9ca08c;
 border-radius: 5px;
 }
+/* 上新精选 */
+.shangxin_box{
+  box-sizing: border-box;
+  padding: 16px;
+  width: 100%;
+  height: auto;
+  background-color: #f4f4f4;
+  margin: 0;
+
+}
+.shangxin_header{
+  padding: 5px;
+  font-size: 18px;
+  box-sizing: border-box;
+}
+.con-shangxin{
+  width: 100%;
+  background-color: #fff;
+  border-radius: 5px;
+  margin: 0;
+  padding: 5px;
+}
+/* 有品秒杀 */
+.box_shangxin{
+   display: flex;
+   width: auto;
+   overflow-x: auto;
+   white-space:nowrap;
+   box-sizing: border-box;
+   
+}
+  .colon {
+    display: inline-block;
+    margin: 0 4px;
+    color: #ee0a24;
+  }
+  .block {
+    display: inline-block;
+    width: 22px;
+    color: #fff;
+    font-size: 12px;
+    text-align: center;
+    background-color: #ee0a24;
+  }
+  .van-count-down{
+    display: inline-block;
+
+  }
+  /* 低 */
+  .di{
+    background-color: #f4f4f4;
+    height: 100px;
+  }
 </style>
