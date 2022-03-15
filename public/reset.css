@@ -182,19 +182,3 @@ a {
 
   margin: 20px 10px 0 15px;
 }
-.van-button {
-  width: 320px;
-  height: 60px;
-  border-radius: 50px;
-  margin: 20px 10px 0 15px;
-}
-.spd{
-  position: fixed;
-  top: 268px;
-  left: 30px;
-}
-.yan{
-  position: fixed;
-  top: 350px;
-  right: 35px;
-}

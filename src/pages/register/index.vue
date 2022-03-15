@@ -30,10 +30,30 @@
       />
     </van-popup>
 
-    <input type="text" placeholder="请输入手机号码" class="inp" />
-    <span class="spd">+86＞</span>
-    <input type="text" placeholder="请输入短信验证码" class="inp2" />
-    <span class="yan" @click.stop="verification">获取验证码</span>
+    <van-uploader :after-read="afterRead" />
+    <img v-if="imgurl" :src="imgurl" alt="" />
+    <van-form @submit="onSubmit">
+      <van-field
+        v-model="username"
+        name="userName"
+        label="用户名"
+        placeholder="用户名"
+        :rules="[{ required: true, message: '请填写用户名' }]"
+      />
+      <van-field
+        v-model="password"
+        type="password"
+        name="password"
+        label="密码"
+        placeholder="密码"
+        :rules="[{ required: true, message: '请填写密码' }]"
+      />
+      <div style="margin: 16px">
+        <van-button round block type="info" native-type="submit"
+          >提交</van-button
+        >
+      </div>
+    </van-form>
     <input type="checkbox" class="inp1" /><span
       >已阅读并同意小米账号<a href="" class="a1">用户协议</a>和<a
         href=""
@@ -41,21 +61,23 @@
         >隐私政策</a
       ></span
     >
-    <van-button round type="info" @click="next">下一步</van-button>
   </div>
 </template>
 
 <script>
 import { Toast } from "vant";
-import { areaList } from "@vant/area-data";
+import { reqRegister } from "../../api/user";
+
 import Vue from "vue";
 import { Area } from "vant";
-import router from "@/router";
 
 Vue.use(Area);
 export default {
   data() {
     return {
+      username: "",
+      password: "",
+      imgurl: "",
       show: false,
       fieldValue: "",
       cascaderValue: "",
@@ -96,100 +118,25 @@ export default {
       this.show = false;
       this.fieldValue = selectedOptions.map((option) => option.text).join("/");
     },
-    verification() {
-      var reg2 = /^1(3|4|5|6|7|8|9)\d{9}$/;
-      var oInput = document.querySelectorAll("input");
-      console.log(oInput);
-      var val2 = oInput[1].value;
-      console.log(val2);
-      if (reg2.test(val2)) {
-        var arr = [
-          "1",
-          "2",
-          "3",
-          "4",
-          "5",
-          "6",
-          "7",
-          "8",
-          "9",
-          "0",
-          "a",
-          "b",
-          "c",
-          "d",
-          "e",
-          "f",
-          "g",
-          "h",
-          "i",
-          "j",
-          "k",
-          "l",
-          "m",
-          "n",
-          "o",
-          "p",
-          "q",
-          "r",
-          "s",
-          "t",
-          "u",
-          "v",
-          "w",
-          "x",
-          "y",
-          "z",
-          "A",
-          "B",
-          "C",
-          "D",
-          "E",
-          "F",
-          "G",
-          "H",
-          "I",
-          "J",
-          "K",
-          "L",
-          "M",
-          "N",
-          "O",
-          "P",
-          "Q",
-          "R",
-          "S",
-          "T",
-          "U",
-          "V",
-          "W",
-          "X",
-          "Y",
-          "Z",
-        ];
-        function yzm(arr) {
-          var arr1 = "";
-          console.log(arr1);
-          for (var i = 0; i < 6; i++) {
-            var a = parseInt(Math.random() * 61);
-            arr1 += arr[a];
-          }
-          Toast(arr1);
-        }
-        yzm(arr);
+    async onSubmit(values) {
+      console.log("submit", values);
+      const result = await reqRegister({ ...values, avatar: this.imgurl });
+      console.log(111, result);
+      if (result.code == "success") {
+        localStorage.setItem("avator", this.imgurl);
+        Toast("注册成功");
+        this.$router.push("/login");
       } else {
-        Toast("请输入正确格式的手机号码");
+        Toast("用户名已存在，请重新注册");
       }
     },
-    next() {
-      var oInput = document.querySelectorAll("input");
-      if (oInput[2].value ?? "" !== "") {
-        this.$router.push("./set");
-      } else {
-        Toast("请勾选协议");
-      }
+    afterRead(file) {
+      // 此时可以自行将文件上传至服务器
+      console.log(file);
+      this.imgurl = file.content;
     },
   },
+
   created() {},
   mounted() {},
   components: {},
@@ -210,5 +157,9 @@ p {
 }
 .a1 {
   color: #0b84ff;
+}
+img {
+  width: 220px;
+  height: 220px;
 }
 </style>
