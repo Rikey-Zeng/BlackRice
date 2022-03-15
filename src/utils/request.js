@@ -5,17 +5,14 @@ import { getToken } from "./auth";
 console.log(111, getToken());
 console.log(111, localStorage.getItem("token"));
 
-const instance = axios.create({ <<
-    << << < HEAD
+const instance = axios.create({
     baseURL: "http://122.9.155.12:3009",
     // baseURL: "http://localhost:3009",
     timeout: 5000,
-    ===
-    === =
+
     baseURL: "http://122.9.155.12:3009",
     timeout: 5000,
-    >>>
-    >>> > 13 a21aa7a8487aad2f068f83ba4e3447883e43c9
+
 });
 
 // 请求拦截

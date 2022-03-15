@@ -20,11 +20,11 @@
     </div>
     <!-- 上新精选 -->
     <div class="box_two">
-    <div class="img_two"><a href=""><img src="./img/01.png" alt="">上新精选</a></div>
-    <div class="img_two"><a href=""><img src="./img/02.png" alt="">小米众筹</a></div>
-    <div class="img_two"><a href=""><img src="./img/03.png" alt="">有品秒杀</a></div>
-    <div class="img_two"><a href=""><img src="./img/04.png" alt="">生活优选</a></div>
-    <div class="img_two"><a href=""><img src="./img/05.png" alt="">小米自营</a></div>
+    <div class="img_two"><a href="https://m.xiaomiyoupin.com/w/new_product_v3?_rt=weex&pageid=4728&sign=846b35b9e94a50a84a0d07b9ab2cc36a&pdl=jianyu&spmref=M_H5.2112.197383.1.29779075&last_scmv2=1008.0.0.0.712&scmv2_num=0&noDL=1"><img src="./img/01.png" alt="">上新精选</a></div>
+    <div class="img_two"><a href="https://m.xiaomiyoupin.com/w/new_product_v3?_rt=weex&pageid=4728&sign=846b35b9e94a50a84a0d07b9ab2cc36a&pdl=jianyu&spmref=M_H5.2112.197383.1.29779075&last_scmv2=1008.0.0.0.712&scmv2_num=0&noDL=1"><img src="./img/02.png" alt="">小米众筹</a></div>
+    <div class="img_two"><a href="https://m.xiaomiyoupin.com/w/new_product_v3?_rt=weex&pageid=4728&sign=846b35b9e94a50a84a0d07b9ab2cc36a&pdl=jianyu&spmref=M_H5.2112.197383.1.29779075&last_scmv2=1008.0.0.0.712&scmv2_num=0&noDL=1"><img src="./img/03.png" alt="">有品秒杀</a></div>
+    <div class="img_two"><a href="https://m.xiaomiyoupin.com/w/new_product_v3?_rt=weex&pageid=4728&sign=846b35b9e94a50a84a0d07b9ab2cc36a&pdl=jianyu&spmref=M_H5.2112.197383.1.29779075&last_scmv2=1008.0.0.0.712&scmv2_num=0&noDL=1"><img src="./img/04.png" alt="">生活优选</a></div>
+    <div class="img_two"><a href="https://m.xiaomiyoupin.com/w/new_product_v3?_rt=weex&pageid=4728&sign=846b35b9e94a50a84a0d07b9ab2cc36a&pdl=jianyu&spmref=M_H5.2112.197383.1.29779075&last_scmv2=1008.0.0.0.712&scmv2_num=0&noDL=1"><img src="./img/05.png" alt="">小米自营</a></div>
     </div>
     <!-- 直播预约 -->
     <div class="zhibo_box">
@@ -52,7 +52,8 @@
 <p>米家家居伴侣</p>
 <p class="dallo">￥299</p>
 </div>
-<img src="./img/022.png" alt="">
+<a href="https://m.xiaomiyoupin.com/w/crowdfundV2?_rt=weex&pageid=6425&sign=a31558dc483536c81f38a701b1cbefce&pdl=jianyu&spmref=M_H5.2112.77081.1.9608799&scmv2_num=1&noDL=1">
+<img src="./img/022.png" alt=""></a>
 <div class="font-color">1.6万人支持        
 <b style="margin:5px;color:red">完成度5056%</b></div>
 
@@ -60,12 +61,14 @@
 </div>
 <!-- 右 -->
 <div class="box_zccon_l">
-<div style="float:right">4款众筹中<van-icon name="arrow" /></div>
-
+<div style="float:right;">4款众筹中<van-icon name="arrow" /></div>
+<div class="zhongchou_l" style="margin-top: 5px;">
+<img src="./img/021.png" alt="">
 </div>
 </div>
-    </div>
-    <!--  -->
+</div>
+ </div>
+    <!--上新精选  -->
     <div style="height:100px">
 
     </div>
@@ -73,6 +76,7 @@
 </template>
 
 <script>
+
 import {
 reqProducts,//获取商品接口
 reqBanners,//轮播图
@@ -117,7 +121,7 @@ export default {
     color: #fff;
     display: flex;
     width: 10%;
-    height: 40.6133px;
+    height: 30.6133px;
     margin-left: 13.12px;
     
 }
@@ -128,12 +132,12 @@ export default {
     float: left;
     margin-left: 10px;
     text-align: center;
-    height: 100%;
+    height: 80%;
 }
 .header_one{
   display: flex;
   width: 100%;
-  height: 41px;
+  height: 31px;
   padding: 10px;
   background-color: rgb(132,93,50);
    
@@ -153,7 +157,7 @@ export default {
 /* 轮播图 */
 .swiper_box{
 width: 100%;
-height: 200px;
+height: 170px;
 background-color: aqua;
 }
  .my-swipe .van-swipe-item {
@@ -162,12 +166,12 @@ background-color: aqua;
   }
   .van-swipe-item img{
     width: 100%;
-    height: 200px;
+    height: 170px;
   }
   /* 上新精选 */
   .box_two{
     width: 100%;
-    height: 100px;
+    height: 80px;
     background-color: #f4f4f4;
     display: flex;
     justify-content: space-around;
@@ -176,8 +180,8 @@ background-color: aqua;
   }
   .img_two img{
     display: block;
-    width: 82px;
-    height: 80px;
+    width:62px;
+    height: 60px;
   }
    .img_two {
     width: 82px;
@@ -240,7 +244,6 @@ color: #fff;
   height: 225px;
   box-sizing: border-box;
   padding:0 16px;
-
 }
 .box_zhongchou_con{
   width: 100%;
@@ -253,7 +256,7 @@ color: #fff;
 width: 50%;
 height: 200px;
 float: left;
-font-size:20px;
+font-size:18px;
 
 box-sizing: border-box;
 padding: 5px;
@@ -266,13 +269,14 @@ font-size: 3%;
 width: 50px;
 height: 20px;
 display:inline-block;
-background-color: rgb(132,93,50);
+background-color: rgb(197, 171, 143);
 position: absolute;
-right:-5px;
+right:5px;
 top: 5px;
 text-align: center;
 line-height: 20px;
 color: #fff;
+border-radius: 5px;
 }
 .box_zccon_r_con{
   width: 100%;
@@ -312,8 +316,25 @@ color: #fff;
 
 .box_zccon_l{
 width: 50%;
-background-color: rgb(96, 207, 6);
+/* background-color: rgb(96, 207, 6); */
 height: 200px;
 float: left;
+padding: 10px;
+box-sizing: border-box;
+}
+.zhongchou_l{
+height:90%;
+width:100%;
+box-sizing: border-box;
+padding: 5px;
+
+
+}
+.zhongchou_l img{
+height:100%;
+width:100%;
+float: left;
+background-color: #9ca08c;
+border-radius: 5px;
 }
 </style>
