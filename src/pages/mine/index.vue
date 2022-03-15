@@ -3,12 +3,17 @@
     <van-cell-group class="top">
       <van-image
         class="img"
+        :src="results.avatar"
         round
         width="5rem"
         height="5rem"
-        src="https://img01.yzcdn.cn/vant/cat.jpeg"
-      />
-      <span>用户名</span>
+      >
+        <template v-slot:loading>
+          <van-loading type="spinner" size="20" />
+        </template>
+        <template v-slot:error>加载失败</template>
+      </van-image>
+      <span>{{ results.nickName }}</span>
     </van-cell-group>
     <van-cell-group>
       <van-cell title="我的订单" is-link to="/order" />
@@ -98,13 +103,13 @@
 </template>
 
 <script>
-import { Cell, CellGroup } from "vant";
-import { Col, Row } from "vant";
-import { Popup } from "vant";
+import { reqInfo } from "../../api/product";
+import { removeToken } from "../../utils/auth";
 export default {
   data() {
     return {
       show: false,
+      results: [],
     };
   },
   computed: {},
@@ -132,12 +137,13 @@ export default {
     // 获取用户信息
     async getreqinfo() {
       console.log("获取用户信息");
-      // const result = await reqInfo();
-      // console.log(result);
-      // this.results = result;
+      const result = await reqInfo();
+      console.log("result", result);
+      this.results = result;
     },
     address() {
       console.log("地址");
+      this.$router.push("/address");
     },
   },
 
