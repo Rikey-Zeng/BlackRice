@@ -7,7 +7,7 @@ import { getToken } from "./auth";
 
 const instance = axios.create({
   baseURL: "http://122.9.155.12:3009",
-  timeout: 5000,
+  timeout: 10000,
 });
 
 // 请求拦截
