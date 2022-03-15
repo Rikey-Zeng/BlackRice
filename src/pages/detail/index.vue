@@ -1,14 +1,15 @@
 <template>
-  <div class="detail">
+  <div class="detail" v-if="detail">
     <!-- 头部 -->
+    
     <van-nav-bar title="商品详情" left-text="返回" @click-left="onClickLeft" />
 
     <!-- 轮播图 -->
     <van-swipe class="my-swipe" :autoplay="3000" indicator-color="white">
       <van-swipe-item>
-        <img src="./img/lunbo0.jpg" alt="" />
+        <img :src="detail.coverImg | formurl"  alt="" />
       </van-swipe-item>
-      <van-swipe-item>
+      <!-- <van-swipe-item>
         <img src="./img/lunbo2.jpg" alt="" />
       </van-swipe-item>
       <van-swipe-item>
@@ -16,13 +17,13 @@
       </van-swipe-item>
       <van-swipe-item>
         <img src="./img/lunbo.jpg" alt="" />
-      </van-swipe-item>
+      </van-swipe-item> -->
     </van-swipe>
     <!-- label  价格 -->
     <div class="label">
       <div class="label-price">
         <span>￥</span>
-        <span>549</span>
+        <span>{{detail.price}}</span>
         <div class="shouchang">
           <img src="./img/sc.jpg" alt="" />
         </div>
@@ -45,7 +46,8 @@
           line-height: 39px;
         "
       >
-        车萝卜智能HUD智炫版 智炫版HUD+标配点烟器供电线
+        <!-- 车萝卜智能HUD智炫版 智炫版HUD+标配点烟器供电线 -->
+        {{detail.name }}
       </div>
       <div
         data-focusable="true"
@@ -121,7 +123,7 @@
     <!--版本选择  -->
     <div class="option">
       <div class="option1">已选</div>
-      <div class="option2">智炫版HUD+标配点烟器供电线x1</div>
+      <div class="option2">智炫版HUD+标配点烟器供电线x{{detail.quantity}}</div>
       <img
         class="option3"
         src="//cdn.cnbj1.fds.api.mi-img.com/mijia-m/production/yrn-buz-shop-center/res/images/icons/icon_arrow_right_min_lightgray.png"
@@ -185,7 +187,9 @@ import { addToCart } from "../../api/cart";
 import { Toast } from "vant";
 export default {
   data() {
-    return {};
+    return {
+      detail:null,
+     };
   },
   computed: {},
   watch: {},
