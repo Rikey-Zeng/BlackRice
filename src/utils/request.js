@@ -2,46 +2,42 @@ import axios from "axios";
 import { Notify } from "vant";
 import { getToken } from "./auth";
 // 配置全局请求域名和超时时间
-console.log(111, getToken());
-console.log(111, localStorage.getItem("token"));
+console.log("token", getToken());
+console.log("token", localStorage.getItem("token"));
 
 const instance = axios.create({
     baseURL: "http://122.9.155.12:3009",
-    // baseURL: "http://localhost:3009",
-    timeout: 5000,
-
-    baseURL: "http://122.9.155.12:3009",
-    timeout: 5000,
-
+    timeout: 10000,
 });
 
 // 请求拦截
 instance.interceptors.request.use(
-    function(config) {
+    function (config) {
         if (getToken()) {
             config.headers.authorization = `Bearer ${getToken()}`;
         }
         return config;
     },
-    function(error) {
+    function (error) {
         return Promise.reject(error);
     }
 );
 
 // 响应拦截
 instance.interceptors.response.use(
-    function(response) {
+    function (response) {
         return response.data;
     },
-    function(error) {
+    async function (error) {
         console.log(error);
         if (error.response) {
-            let { status } = error.response;
+            let { status } = await error.response;
             if (status === 401) {
                 Notify({ type: "warning", message: "未授权，请先登录" });
                 // 直接打回登录页面
-                // window.location.href = "#/login";
-                window.location.href = "/login";
+                window.location.href = "#/login";
+                // window.location.href = "/login";
+
             }
             return Promise.reject(error);
         }
