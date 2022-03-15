@@ -71,13 +71,23 @@ const router = new VueRouter({
       },
       component: () => import("../pages/home"),
     },
+    // 帮助
     {
-      path: "/address",
-      name: "Address",
+      path: "/help",
+      name: "Help",
       meta: {
-        showFooter: true,
+        showFooter: false,
       },
-      component: () => import("../pages/address"),
+      component: () => import("../pages/help"),
+    },
+    // 110
+    {
+      path: "/police",
+      name: "Police",
+      meta: {
+        showFooter: false,
+      },
+      component: () => import("../pages/police"),
     },
   ],
 });
