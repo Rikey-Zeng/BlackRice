@@ -7,10 +7,6 @@ import { getToken } from "./auth";
 
 const instance = axios.create({
   baseURL: "http://122.9.155.12:3009",
-  // baseURL: "http://localhost:3009",
-  timeout: 5000,
-
-  baseURL: "http://122.9.155.12:3009",
   timeout: 5000,
 });
 
@@ -32,15 +28,15 @@ instance.interceptors.response.use(
   function (response) {
     return response.data;
   },
-  function (error) {
+  async function (error) {
     console.log(error);
     if (error.response) {
-      let { status } = error.response;
+      let { status } = await error.response;
       if (status === 401) {
         Notify({ type: "warning", message: "未授权，请先登录" });
         // 直接打回登录页面
-        // window.location.href = "#/login";
-        window.location.href = "/login";
+        window.location.href = "#/login";
+        // window.location.href = "/login";
       }
       return Promise.reject(error);
     }

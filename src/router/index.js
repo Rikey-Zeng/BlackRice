@@ -71,6 +71,14 @@ const router = new VueRouter({
       },
       component: () => import("../pages/home"),
     },
+    {
+      path: "/address",
+      name: "Address",
+      meta: {
+        showFooter: true,
+      },
+      component: () => import("../pages/address"),
+    },
   ],
 });
 export default router;
