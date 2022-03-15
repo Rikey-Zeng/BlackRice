@@ -10,8 +10,8 @@
       @click-right="onClickRight"
     />
     <h1>注册小米账号</h1>
-    <p>系统会根据您选择的国家/地区的法律法规存储您的</p>
-    <p>个人信息</p>
+    <p class="p">系统会根据您选择的国家/地区的法律法规存储您的</p>
+    <p class="p">个人信息</p>
     <van-field
       v-model="fieldValue"
       is-link
@@ -148,13 +148,18 @@ export default {
   components: {},
 };
 </script>
-<style scoped>
+<style >
+.center {
+  color: grey;
+  width: 150px;
+  margin: 0 auto;
+}
 h1 {
   font-size: 30px;
   margin: 20px 0 0 20px;
   font-weight: 800;
 }
-p {
+.p {
   display: block;
   font-size: 15px;
   width: 340px;
