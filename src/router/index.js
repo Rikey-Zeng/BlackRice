@@ -71,25 +71,6 @@ const router = new VueRouter({
       },
       component: () => import("../pages/home"),
     },
-<<<<<<< HEAD
-    // 帮助
-    {
-      path: "/help",
-      name: "Help",
-      meta: {
-        showFooter: false,
-      },
-      component: () => import("../pages/help"),
-    },
-    // 110
-    {
-      path: "/police",
-      name: "Police",
-      meta: {
-        showFooter: false,
-      },
-      component: () => import("../pages/police"),
-=======
     {
       path: "/address",
       name: "Address",
@@ -97,7 +78,6 @@ const router = new VueRouter({
         showFooter: true,
       },
       component: () => import("../pages/address"),
->>>>>>> b7ee97162356fcfe236edfab525a3e32eac00fa6
     },
   ],
 });
