@@ -11,7 +11,7 @@
       <span>用户名</span>
     </van-cell-group>
     <van-cell-group>
-      <van-cell title="我的订单" is-link to="/" />
+      <van-cell title="我的订单" is-link to="/order" />
     </van-cell-group>
 
     <van-row class="ico">
@@ -63,6 +63,7 @@
         title="地址管理"
         is-link
         icon="location"
+        @click="address"
       />
       <van-cell
         class="nam"
@@ -111,19 +112,15 @@ export default {
 
   methods: {
     fukuan() {
-      this.$router.push("/");
+      this.show = true;
     },
     shouhuo() {
-      // this.$router.push("/");
       this.show = true;
-      console.log(111);
     },
     pingjia() {
-      // this.$router.push("/");
       this.show = true;
     },
     tuikuan() {
-      // this.$router.push("/");
       this.show = true;
     },
     //退出登录
@@ -139,7 +136,11 @@ export default {
       // console.log(result);
       // this.results = result;
     },
+    address() {
+      console.log("地址");
+    },
   },
+
   created() {
     this.getreqinfo();
   },
