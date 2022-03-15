@@ -54,6 +54,8 @@
         >
       </div>
     </van-form>
+    <div class="center" @click="denglu()">已有账号？点击登录</div>
+
     <input type="checkbox" class="inp1" /><span
       >已阅读并同意小米账号<a href="" class="a1">用户协议</a>和<a
         href=""
@@ -102,6 +104,7 @@ export default {
   methods: {
     onClickLeft() {
       Toast("返回");
+      this.$router.push("/home");
     },
     onClickRight() {
       //   Toast("按钮");
@@ -134,6 +137,9 @@ export default {
       // 此时可以自行将文件上传至服务器
       console.log(file);
       this.imgurl = file.content;
+    },
+    denglu() {
+      this.$router.push("/login");
     },
   },
 

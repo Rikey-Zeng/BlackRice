@@ -71,6 +71,24 @@ const router = new VueRouter({
       },
       component: () => import("../pages/home"),
     },
+    // 帮助
+    {
+      path: "/help",
+      name: "Help",
+      meta: {
+        showFooter: false,
+      },
+      component: () => import("../pages/help"),
+    },
+    // 110
+    {
+      path: "/police",
+      name: "Police",
+      meta: {
+        showFooter: false,
+      },
+      component: () => import("../pages/police"),
+    },
   ],
 });
 export default router;
