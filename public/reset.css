@@ -127,3 +127,74 @@ table {
   border-collapse: collapse;
   border-spacing: 0;
 }
+a {
+  text-decoration: none;
+}
+.title {
+  display: block;
+  width: 31px;
+  height: 34px;
+  margin-left: 70%;
+  background-image: url("./img/1.png");
+  background-repeat: no-repeat;
+  background-size: 20px 20px ;
+  position: fixed;
+  top: 13px;
+  left: -55px;
+  z-index: 222;
+}
+.title1{
+  display: block;
+  width: 31px;
+  height: 30px;
+  margin-left: 70%;
+  background-image: url("./img/2.png");
+  background-repeat: no-repeat;
+  background-size: 20px 20px ;
+  position: fixed;
+  top: 13px;
+  left: -3px;
+  z-index: 222;
+}
+.van-cell{
+  background-color:rgba(240,240,240,1);
+  border-radius: 10px;
+  width: 340px;
+  height: 50px;
+  margin: 0 auto;
+  margin-top: 15px;
+}
+.inp,.inp2{
+  background-color:rgba(240,240,240,1);
+  border-radius: 10px;
+  width: 340px;
+  border: none;
+  outline: none;
+  height: 50px;
+  margin: 0 0 0 15px;
+  margin-top: 30px;
+  text-indent: 80px;
+}
+.inp2{
+  text-indent: 20px;
+}
+.inp1{
+
+  margin: 20px 10px 0 15px;
+}
+.van-button {
+  width: 320px;
+  height: 60px;
+  border-radius: 50px;
+  margin: 20px 10px 0 15px;
+}
+.spd{
+  position: fixed;
+  top: 268px;
+  left: 30px;
+}
+.yan{
+  position: fixed;
+  top: 350px;
+  right: 35px;
+}

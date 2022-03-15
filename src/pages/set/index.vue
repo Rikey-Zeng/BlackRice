@@ -1,5 +1,7 @@
 <template>
-  <div class="login">
+  <div class="set">
+    <van-uploader :after-read="afterRead" />
+    <img v-if="imgurl" :src="imgurl" alt="" />
     <van-form @submit="onSubmit">
       <van-field
         v-model="username"
@@ -26,14 +28,14 @@
 </template>
 
 <script>
-import { reqLogin } from "../../api/user";
-import { Notify } from "vant";
-import { setToken } from "../../utils/auth";
+import { reqRegister } from "../../api/user";
+import { Toast } from "vant";
 export default {
   data() {
     return {
       username: "",
       password: "",
+      imgurl: "",
     };
   },
   computed: {},
@@ -42,17 +44,20 @@ export default {
   methods: {
     async onSubmit(values) {
       console.log("submit", values);
-      const result = await reqLogin(values);
-      console.log(result);
+      const result = await reqRegister({ ...values, avatar: this.imgurl });
+      console.log(111, result);
       if (result.code == "success") {
-        Notify({ type: "primary", message: "登陆成功" });
-        // message.success("登陆成功");
-        setToken(result.token);
-        this.$store.commit("changeToken", result.token);
-        // // vuex持久化
-        localStorage.setItem("token", result.token);
-        this.$router.push("/home");
+        localStorage.setItem("avator", this.imgurl);
+        Toast("注册成功");
+        this.$router.push("/login");
+      } else {
+        Toast("用户名已存在，请重新注册");
       }
+    },
+    afterRead(file) {
+      // 此时可以自行将文件上传至服务器
+      console.log(file);
+      this.imgurl = file.content;
     },
   },
   created() {},
@@ -61,4 +66,8 @@ export default {
 };
 </script>
 <style scoped>
+img {
+  width: 220px;
+  height: 220px;
+}
 </style>
