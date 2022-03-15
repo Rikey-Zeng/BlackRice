@@ -1,4 +1,4 @@
-/* http://meyerweb.com/eric/tools/css/reset/ 
+/* http://meyerweb.com/eric/tools/css/reset/
    v2.0 | 20110126
    License: none (public domain)
 */
@@ -180,12 +180,6 @@ a {
 }
 .inp1{
 
-  margin: 20px 10px 0 15px;
-}
-.van-button {
-  width: 320px;
-  height: 60px;
-  border-radius: 50px;
   margin: 20px 10px 0 15px;
 }
 .spd{
