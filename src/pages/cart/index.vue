@@ -168,16 +168,17 @@ export default {
       this.getcartlist(); //删除成功重新调用获取购物车列表接口
     },
 
-    async onSubmit() {
+   async  onSubmit() {
       if (this.selectgoods.length > 0) {
         //   console.log(111, this.$store.state); // 看一下vuex状态里面的数据有没有
         const receiver = this.$store.state.address.receiver;
         const regions = this.$store.state.address.regions;
         const address = this.$store.state.address.address;
+        console.log(receiver,regions,address);
         // 从vuex中拿到收货人信息
         if (!receiver && !regions && !address) {
           // 只要有一项不存在，就跳转到添加收货人页面
-          this.$router.push("/address");
+          this.$router.push("/order");
         } else {
           // 如果存在收货人，跳转到订单页面
           const orderDetails = this.selectgoods;
@@ -203,6 +204,7 @@ export default {
     },
     async updataPro(id, num) {
       const result = await addToCart(id, num);
+      console.log(result);
       this.lists.forEach((data) => {
         if (data.product._id == id) {
           data.quantity = data.quantity + num;

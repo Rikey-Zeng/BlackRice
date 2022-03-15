@@ -29,6 +29,7 @@ export default {
     this.$store.commit("address/changereceiver", address.receiver);
     this.$store.commit("address/changeregions", address.regions);
     this.$store.commit("address/changeaddress", address.address);
+    
   },
   data() {
     return {};
