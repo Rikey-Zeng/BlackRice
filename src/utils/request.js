@@ -35,8 +35,9 @@ instance.interceptors.response.use(
             if (status === 401) {
                 Notify({ type: "warning", message: "未授权，请先登录" });
                 // 直接打回登录页面
-                // window.location.href = "#/login";
-                window.location.href = "/login";
+                window.location.href = "#/login";
+                // window.location.href = "/login";
+
             }
             return Promise.reject(error);
         }

@@ -133,6 +133,7 @@ export default {
       console.log("退出登录");
       localStorage.removeItem("token");
       removeToken("token");
+      this.getreqinfo();
     },
     // 获取用户信息
     async getreqinfo() {
