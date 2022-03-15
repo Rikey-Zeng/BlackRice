@@ -20,7 +20,7 @@
             class="tc"
             v-for="data in list2.slice(0, 6)"
             :key="data._id"
-            @click="fenleiList2(data.name), godetail()"
+            @click=" godetail(data._id)"
           >
             <img :src="data.coverImg" alt="" />
             <p>{{ data.name }}</p>
@@ -34,7 +34,7 @@
             class="tc"
             v-for="data in list2.slice(0, 6)"
             :key="data._id"
-            @click="fenleiList2(data.name), godetail()"
+            @click="godetail(data._id)"
           >
             <img :src="data.coverImg" alt="" />
             <p>{{ data.name }}</p>
@@ -73,7 +73,7 @@ export default {
       //  this.reqProduct_catelist();
     },
     godetail(id) {
-      // console.log(id);
+      console.log(222,id);
       this.$router.push("/detail/" + id);
     },
     //onLoad默认执行一次
@@ -81,6 +81,7 @@ export default {
       // console.log(name);
       this.fenleiList2(name);
     },
+    
   },
   created() {
     this.fenleiList();
