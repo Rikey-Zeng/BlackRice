@@ -22,6 +22,7 @@
         >
       </div>
     </van-form>
+    <div class="center" @click="zhuce()">没有账号？注册账号</div>
   </div>
 </template>
 
@@ -54,11 +55,19 @@ export default {
         this.$router.push("/home");
       }
     },
+    zhuce() {
+      this.$router.push("/reg");
+    },
   },
   created() {},
   mounted() {},
   components: {},
 };
 </script>
-<style scoped>
+<style>
+.center {
+  color: grey;
+  width: 150px;
+  margin: 0 auto;
+}
 </style>
