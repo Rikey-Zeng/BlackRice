@@ -22,13 +22,13 @@
 export default {
   name: "App",
   created() {
-    // const token = localStorage.getItem("token");
-    // this.$store.commit("changeToken", token);
-    // // 持久化处理收货人信息
-    // const address = JSON.parse(localStorage.getItem("address"));
-    // this.$store.commit("address/changereceiver", address.receiver);
-    // this.$store.commit("address/changeregions", address.regions);
-    // this.$store.commit("address/changeaddress", address.address);
+    const token = localStorage.getItem("token");
+    this.$store.commit("changeToken", token);
+    // 持久化处理收货人信息
+    const address = JSON.parse(localStorage.getItem("address"));
+    this.$store.commit("address/changereceiver", address.receiver);
+    this.$store.commit("address/changeregions", address.regions);
+    this.$store.commit("address/changeaddress", address.address);
   },
   data() {
     return {};
