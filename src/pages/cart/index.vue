@@ -11,21 +11,28 @@
       <div class="goods" v-for="(item, index) in lists" :key="item._id + index">
         <van-swipe-cell>
           <!-- 单选 -->
-          <van-checkbox v-model="item.checked"></van-checkbox>
+          <van-checkbox v-model="item.checked" class="a"></van-checkbox>
           <!-- 图片 -->
           <img class="goods-img" :src="item.product.coverImg" alt="" />
           <!-- 商品信息 -->
           <div class="goods-info">
             <p class="pad">{{ item.product.name }}</p>
-            <p class="pad">￥：{{ item.product.price }}</p>
-            <button @click="updataPro(item.product._id, 1)">+</button>
-            <input type="text" :value="item.quantity" class="numvue" />
+            <p class="pad">{{ item.product.price }}元</p>
+            <div class="numcart">
+              <van-icon name="plus" @click="updataPro(item.product._id, 1)" />
+              <input
+                type="text"
+                :value="item.quantity"
+                class="numvue"
+              /><van-icon
+                name="minus"
+                @click="item.quantity > 1 && updataPro(item.product._id, -1)"
+              />
+            </div>
+            <!-- <button>+</button -->
+
             <!-- 商品数量大于1 才会执行 -->
-            <button
-              @click="item.quantity > 1 && updataPro(item.product._id, -1)"
-            >
-              -
-            </button>
+
             <!--  -->
           </div>
           <template #right>
@@ -40,6 +47,13 @@
         </van-swipe-cell>
       </div>
     </div>
+    <div v-else>
+      <van-empty
+        class="custom-image"
+        image="https://cdn.cnbj1.fds.api.mi-img.com/mijia-m/production/yrn-buz-shop-center/res/images/no_result/no_result_cart3.png"
+        description="目前没有添加商品哦~"
+      />
+    </div>
     <van-submit-bar
       :price="sumPrice * 100"
       button-text="提交订单"
@@ -47,13 +61,7 @@
     >
       <!-- 全选 -->
       <van-checkbox v-model="checked" shape="square">全选 </van-checkbox>
-      <van-icon name="delete-o" @click="delall" />
     </van-submit-bar>
-    <van-empty
-      class="custom-image"
-      image="https://cdn.cnbj1.fds.api.mi-img.com/mijia-m/production/yrn-buz-shop-center/res/images/no_result/no_result_cart3.png"
-      description="目前没有添加商品哦~"
-    />
 
     <span class="text" @click="tohome">去首页逛逛 </span>
 
@@ -301,6 +309,12 @@ body {
 .van-list {
   padding-bottom: 40px;
 }
+.numcart {
+  margin-top: 11px;
+  float: left;
+  width: 80px;
+  margin-left: 13px;
+}
 .goods-card {
   margin: 0;
   background-color: white;
@@ -316,16 +330,42 @@ body {
 .goods {
   display: flex;
   padding: 10px;
+  background-color: white;
+  margin-top: 5px;
+}
+.a {
+  margin-top: 35px;
+}
+.goods-info p:nth-child(1) {
+  float: left;
+  font-size: 14px;
+  width: 120px;
+  height: 30px;
+  margin-top: 10px;
+  margin-left: 10px;
+}
+.goods-info p:nth-child(2) {
+  float: left;
+  margin-top: 16px;
+  margin-left: 22px;
+  padding-bottom: 8px;
+}
+.van-checkbox {
+  margin-top: 5px;
 }
 .goods .goods-img {
   width: 80px;
   height: 80px;
   margin: 5px;
   float: left;
+  margin-left: 15px;
 }
 .numvue {
   width: 40px;
   text-align: center;
+  border: none;
+  font-size: 20px;
+  color: orangered;
 }
 .van-swipe-cell {
   width: 100%;
