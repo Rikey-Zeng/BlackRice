@@ -80,7 +80,10 @@ export default {
   components: {},
 };
 </script>
-<style scoped>
+<style>
+body {
+  background-color: rgb(244, 244, 244);
+}
 .tuijian {
   font-size: 16px;
   color: rgb(35, 34, 34);
@@ -94,7 +97,7 @@ export default {
   border: 1px gray solid;
   width: 101px;
   height: 37px;
-  border-radius: 25px;
+
   text-align: center;
   line-height: 37px;
   font-size: 14px;
@@ -112,18 +115,23 @@ export default {
   width: 100%;
 }
 .addcart {
-  padding: 10px;
-  width: 50%;
-  height: 300px;
+  margin-left: 7px;
+  width: 47%;
+  height: 257px;
+  background-color: white;
+  border-radius: 15px;
+  margin-top: 10px;
+  float: left;
 }
 .addcart img {
-  width: 160px;
-  height: 160px;
-  border-radius: 10px;
+  width: 178px;
+  height: 178px;
+  border-radius: 10px 10px 0px 0px;
 }
 .addcart p {
   padding-left: 10px;
   padding-right: 10px;
+  margin-top: 10px;
 }
 .van-list {
   padding-bottom: 40px;
