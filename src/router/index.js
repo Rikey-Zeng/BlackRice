@@ -89,6 +89,22 @@ const router = new VueRouter({
       },
       component: () => import("../pages/police"),
     },
+    {
+      path: "/address",
+      name: "Address",
+      meta: {
+        showFooter: false,
+      },
+      component: () => import("../pages/address"),
+    },
+    {
+      path: "/addressnew",
+      name: "Addressnew",
+      meta: {
+        showFooter: false,
+      },
+      component: () => import("../pages/addressnew"),
+    },
   ],
 });
 export default router;
