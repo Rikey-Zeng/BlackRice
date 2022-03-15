@@ -164,7 +164,7 @@ export default {
 };
 </script>
 <style scoped>
-.detail {
+/* .detail {
   width: 100%;
   /* background-color: skyblue; */
 }
@@ -302,19 +302,18 @@ export default {
 }
 
 .auto2 {
+  /* color: blue; */
   color: rgb(95, 95, 95);
   font-size: 17px;
   font-weight: bold;
-  line-height: 4px;
+  line-height: 35px;
   margin-right: 8px;
   width: 112px;
-  position: relative;
+  position: absolute;
   left: 60px;
-  /* display: inline-block; */
+  display: inline-block;
   width: 100%;
-  top: 24px;
-  /* margin-left: 60px; */
-  /* margin-top: 15px; */
+  top: 15px;
 }
 .auto3 {
   position: absolute;
@@ -372,11 +371,14 @@ export default {
   left: 200px;
   top: 60px;
 }
-
+/* .cart{
+  margin-right: 70px;
+  margin-left:30px;
+} */
 .gouglu {
   height: 120px;
 }
 .gouglu img {
   width: 30px;
-}
+} */
 </style>
