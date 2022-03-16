@@ -18,6 +18,7 @@
           <div class="goods-info">
             <p class="pad">{{ item.product.name }}</p>
             <p class="pad">{{ item.product.price }}元</p>
+            
             <div class="numcart">
               <van-icon name="plus" @click="updataPro(item.product._id, 1)" />
               <input
