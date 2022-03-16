@@ -1,172 +1,97 @@
 <template>
   <div class="detail" v-if="detail">
     <!-- 头部 -->
-    
     <van-nav-bar title="商品详情" left-text="返回" @click-left="onClickLeft" />
-
     <!-- 轮播图 -->
     <van-swipe class="my-swipe" :autoplay="3000" indicator-color="white">
       <van-swipe-item>
-        <img :src="detail.coverImg | formurl"  alt="" />
+        <img :src="detail.coverImg | formurl" alt="" />
       </van-swipe-item>
       <!-- <van-swipe-item>
-        <img src="./img/lunbo2.jpg" alt="" />
-      </van-swipe-item>
-      <van-swipe-item>
         <img src="./img/lunbo3.jpg" alt="" />
       </van-swipe-item>
       <van-swipe-item>
         <img src="./img/lunbo.jpg" alt="" />
       </van-swipe-item> -->
+      -->
     </van-swipe>
-    <!-- label  价格 -->
-    <div class="label">
-      <div class="label-price">
-        <span>￥</span>
-        <span>{{detail.price}}</span>
-        <div class="shouchang">
-          <img src="./img/sc.jpg" alt="" />
-        </div>
-      </div>
-      <p>￥699</p>
-    </div>
-    <!-- 会员 -->
-    <div class="vip">
-      <img src="./img/vip.jpg" alt="" />
-    </div>
 
-    <!-- 中间文字 -->
     <div class="center">
-      <div
-        class="css-901oao"
-        style="
-          color: rgb(51, 51, 51);
-          font-size: 26px;
-          font-weight: 600;
-          line-height: 39px;
-        "
-      >
-        <!-- 车萝卜智能HUD智炫版 智炫版HUD+标配点烟器供电线 -->
-        {{detail.name }}
-      </div>
-      <div
-        data-focusable="true"
-        tabindex="0"
-        class="css-901oao"
-        style="
-          color: rgb(136, 136, 136);
-          display: flex;
-          font-size: 23px;
-          line-height: 35px;
-          margin-top: 9.5px;
-          padding-right: 19px;
-          padding-left: 19px;
-        "
-      >
-        语音交互，高德地图，多车型适配，赠送流量包
+      <!-- label 价格 -->
+      <div class="label">
+        <span class="label1" style="">￥</span>
+        <span class="label2" style="">{{ detail.price }}</span>
+        <div class="label3" style="">￥{{ detail.price }}</div>
+        <img class="label4" alt="" src="./img/sc.jpg" />
       </div>
 
-      <div
-        class="centernn"
-        style="
-          align-items: center;
-          background-color: rgb(255, 248, 237);
-          border-radius: 9.5px;
-          height: 54.5px;
-          margin-right: 19px;
-          margin-left: 19px;
-          margin-top: 21px;
-          padding-left: 9.5px;
-          -webkit-box-align: center;
-        "
-      >
-        <div style="height: 38.5px; width: 38.5px">
-          <div
-            style="
-              background-image: url('//cdn.cnbj1.fds.api.mi-img.com/mijia-m/production/yrn-buz-shop-center/res/images/product/ranklist_logo.png');
-            "
-          ></div>
-          <img
-            src="//cdn.cnbj1.fds.api.mi-img.com/mijia-m/production/yrn-buz-shop-center/res/images/product/ranklist_logo.png"
-          />
+      <!-- vip -->
+      <img class="vip" src="./img/vip.jpg" alt="" />
+      <!-- title -->
+      <div>
+        <div class="titi">
+          <!-- 车萝卜智能HUD智炫版 智炫版HUD+标配点烟器供电线 -->
+          {{ detail.name }}
         </div>
-        <div
-          class="centernn1"
-          style="
-            align-items: center;
-            justify-content: flex-start;
-            margin-left: 9.5px;
-            -webkit-box-align: center;
-            -webkit-box-pack: start;
-          "
+        <div class="titi1" style="">
+          语音交互，高德地图，多车型适配，赠送流量包
+        </div>
+      </div>
+
+      <!-- 排行 -->
+      <div class="paihang">
+        <img class="paihang1" src="./img/bang.jpg" />
+        <div class="paihang2" style="">车载电器口碑总榜第10名</div>
+        <img class="paihang3" src="./img/jiantou.jpg" />
+      </div>
+
+      <!-- 尾部 -->
+    </div>
+
+    <!--立即领取 -->
+    <img class="liji" src="./img/1000.jpg" alt="" />
+    <!-- 脚 -->
+    <div class="footer">
+      <div class="auto">
+        <div class="auto1" style="">已选</div>
+        <span class="auto2" style=""
+          >智炫版HUD+标配点烟器供电线x{{ detail.quantity }}</span
         >
-          <div
-            class="centernn2"
-            style="color: rgb(51, 51, 51); font-size: 23px; font-weight: 400"
-          >
-            车载电器口碑总榜第10名
-          </div>
+        <img class="auto3" src="./img/jiantou1.jpg" />
+      </div>
+      <!-- 默认地址 -->
+      <!--默认地址  -->
+      <div class="address">
+        <div class="address1">送至</div>
+
+        <div class="address2">北京北京市海淀区清河街道</div>
+
+        <img
+          class="address3"
+          src="//cdn.cnbj1.fds.api.mi-img.com/mijia-m/production/yrn-buz-shop-center/res/images/icons/icon_arrow_right_min_lightgray.png"
+        />
+        <div class="addressnn">
           <img
-            class="centernn3"
-            src="//cdn.cnbj1.fds.api.mi-img.com/mijia-m/production/yrn-buz-shop-center/res/images/product/ranklist_icon.png"
+            class="address4"
+            src="//cdn.cnbj1.fds.api.mi-img.com/mijia-m/production/yrn-buz-shop-center/res/images/product/icon_youpin_delivery.png"
           />
+          <span class="address5">有货</span>
+          <span class="address6">，24:00前支付，预计明天(3月15日)发货。</span>
         </div>
       </div>
-    </div>
-    <img
-      alt=""
-      draggable="false"
-      src="https://img.youpin.mi-img.com/youpinoper/dfae4d83b02472999fcd224ae1b41935.png?w=996&amp;h=108"
-      class="css-9pa8cd1"
-    />
-
-    <!--版本选择  -->
-    <div class="option">
-      <div class="option1">已选</div>
-      <div class="option2">智炫版HUD+标配点烟器供电线x{{detail.quantity}}</div>
-      <img
-        class="option3"
-        src="//cdn.cnbj1.fds.api.mi-img.com/mijia-m/production/yrn-buz-shop-center/res/images/icons/icon_arrow_right_min_lightgray.png"
-      />
-    </div>
-    <!--默认地址  -->
-    <div class="address">
-      <div class="address1">送至</div>
-
-      <div class="address2">北京北京市海淀区清河街道</div>
-
-      <img
-        class="address3"
-        src="//cdn.cnbj1.fds.api.mi-img.com/mijia-m/production/yrn-buz-shop-center/res/images/icons/icon_arrow_right_min_lightgray.png"
-      />
-      <div class="addressnn">
-        <img
-          class="address4"
-          src="//cdn.cnbj1.fds.api.mi-img.com/mijia-m/production/yrn-buz-shop-center/res/images/product/icon_youpin_delivery.png"
-        />
-        <span class="address5">有货</span>
-        <span class="address6">，24:00前支付，预计明天(3月15日)发货。</span>
+      <!-- gouglu -->
+      <div class="gouglu">
+        <img alt="" src="./img/勾子.jpg" />
+        <span>包邮</span>
+        <img alt="" src="./img/勾子.jpg" />
+        <span>7天无理由</span>
+        <img alt="" src="./img/勾子.jpg" />
+        <span>有品配送</span>
+        <img alt="" src="./img/勾子.jpg" />
+        <span>三方店铺</span>
       </div>
-    </div>
-    <!-- 尾部 -->
-    <img alt="" src="./img/勾子.jpg" />
-    <span class="footer">包邮</span>
-    <img alt="" src="./img/勾子.jpg" />
-    <span class="footer">7天无理由</span>
-    <img alt="" src="./img/勾子.jpg" />
-    <span class="footer">有品配送</span>
-    <img alt="" src="./img/勾子.jpg" />
-    <span class="footer">三方店铺</span>
-    <img alt="" src="./img/勾子.jpg" />
 
-    <div class="footer">包邮</div>
-    <div class="footer">7天无理由</div>
-    <div class="footer">有品配送</div>
-
-    <!-- 加入购物车 -->
-    <div>
       <van-goods-action class="cart">
-        <!-- <van-goods-action-icon icon="chat-o" text="客服" dot /> -->
         <van-goods-action-icon icon="cart-o" text="购物车" badge="5" />
         <van-goods-action-icon icon="shop-o" text="店铺" badge="12" />
         <van-goods-action-button
@@ -179,17 +104,19 @@
       </van-goods-action>
     </div>
   </div>
+  <!-- 测试 -->
 </template>
 
 <script>
 import { reqProductById } from "../../api/product";
 import { addToCart } from "../../api/cart";
+
 import { Toast } from "vant";
 export default {
   data() {
     return {
-      detail:null,
-     };
+      detail: null,
+    };
   },
   computed: {},
   watch: {},
@@ -212,11 +139,9 @@ export default {
   },
 
   methods: {
-    //
     onClickLeft() {
       Toast(history.back(-1));
     },
-
     async loadDetail(id) {
       const result = await reqProductById(id);
       console.log(result);
@@ -231,6 +156,7 @@ export default {
   },
   created() {
     const id = this.$route.params.id;
+    console.log(id);
     this.loadDetail(id);
   },
   mounted() {},
@@ -239,216 +165,218 @@ export default {
 </script>
 <style scoped>
 .detail {
-  width: 600px;
+  width: 100%;
+  /* background-color: skyblue; */
 }
-.my-swipe .van-swipe-item {
-  color: #fff;
-  font-size: 20px;
-  line-height: 150px;
-  text-align: center;
-  background-color: #39a9ed;
-
-  height: 600px;
+.my-swipe {
+  width: 100%;
+  height: 500px;
 }
 .my-swipe img {
-  width: 600px;
-  height: 600px;
-}
-.label {
-  width: 600px;
-  height: 100px;
-  /* background-color: yellow; */
-  overflow: hidden;
-  padding: 0 8px 0 19px;
-  box-sizing: border-box;
-  position: relative;
-}
-.label-price {
-  height: 56px;
-  /* background-color: skyblue; */
-  margin-top: 14.5px;
-  width: 600px;
-  display: flex;
-  position: relative;
-}
-.label-price span:nth-of-type(1) {
-  width: 14.4px;
-  height: 34.4px;
-  color: #99621a;
-  font-size: 26px;
-  font-weight: 500;
-  display: block;
-  float: left;
-  /* background-color: gray; */
-  margin-top: 18px;
-}
-.label-price span:nth-of-type(2) {
-  display: block;
-  color: rgb(153, 98, 26);
-  width: 70px;
-  height: 56px;
-  line-height: 66px;
-  font-size: 42px;
-  /* background-color: pink; */
-  font-weight: 500;
-  margin-left: 10px;
-  float: left;
-}
-
-.shouchang img {
-  width: 66px;
-  height: 66px;
-  position: absolute;
-  right: 30px;
-}
-.shouchang {
-  width: 66px;
-  height: 66px;
-  float: right;
-}
-.label p {
-  height: 30px;
-  width: 600px;
-  /* background-color:pink; */
-  position: absolute;
-  bottom: 0px;
-  margin: 0px;
-  left: 20px;
-  text-decoration: line-through;
-}
-
-.vip img {
-  width: 562px;
-  height: 77 px;
-  position: absolute;
-  left: 20px;
+  width: 100%;
+  height: 500px;
 }
 .center {
-  height: 200px;
-  /* background-color: skyblue; */
-  margin-top: 90px;
-  padding: 10px 16px;
-}
-.centernn {
-  margin: 0px;
-}
-.centernn1 {
-  /* position: absolute; */
-  position: relative;
-}
-.centernn2 {
-  position: absolute;
-  left: 70px;
-  top: -25px;
-}
-.centernn3 {
-  position: absolute;
-  right: 10px;
-  top: -45px;
+  padding: 20px;
 }
 
-.css-9pa8cd1 {
-  height: 66.6px;
-  width: 600px;
-  margin-top: 10px;
-}
-.option {
-  width: 600px;
-  height: 60.6px;
+.label {
+  width: 100%;
+  height: 70px;
   /* background-color: pink; */
   position: relative;
+  margin-bottom: 30px;
 }
-.option1 {
-  color: rgb(136, 136, 136);
-  font-size: 23px;
-  line-height: 35px;
+.label1 {
+  color: rgb(153, 98, 26);
+  font-size: 26px;
+  font-weight: 500;
+  position: relative;
+  top: -2px;
   position: absolute;
-  left: 30px;
-  top: 15px;
+  left: 0px;
+  top: 20px;
 }
-.option2 {
+.label2 {
+  color: rgb(153, 98, 26);
+  font-size: 42px;
+  font-weight: 500;
+  margin-left: 3px;
+  position: absolute;
+  left: 20px;
+  top: 8.5px;
+}
+.label3 {
+  color: rgba(0, 0, 0, 0.4);
+  font-size: 23px;
+  margin-left: 19px;
+  text-decoration-line: line-through;
+  position: absolute;
+  left: 0px;
+  bottom: -5px;
+}
+.label4 {
+  position: absolute;
+  right: -25px;
+  top: 8.5px;
+  width: 70px;
+}
+.vip {
+  width: 100%;
+  height: 66px;
+}
+.titi {
   color: rgb(51, 51, 51);
   font-size: 23px;
-  line-height: 35px;
-  margin-right: 8px;
-  position: absolute;
-  left: 100px;
-  top: 15px;
+  font-weight: 600;
+  line-height: 39px;
+  margin-top: 20px;
 }
-.option3 {
+.titi1 {
+  color: rgb(136, 136, 136);
+  display: flex;
+  font-size: 20px;
+  line-height: 35px;
+  margin-top: 9.5px;
+  padding-right: 19px;
+}
+.paihang {
+  align-items: center;
+  background-color: rgb(255, 248, 237);
+  border-radius: 9.5px;
+  height: 54.5px;
+  margin-right: 19px;
+  margin-left: 19px;
+  margin-top: 21px;
+  padding-left: 9.5px;
+  -webkit-box-align: center;
+  position: relative;
+}
+.paihang1 {
   width: 38.5px;
   height: 38.5px;
   position: absolute;
-  right: 50px;
+  top: 10px;
+}
+.paihang2 {
+  position: absolute;
+  left: 60px;
+  top: 18px;
+  color: rgb(51, 51, 51);
+  font-size: 19px;
+  font-weight: 400;
+}
+.paihang3 {
+  position: absolute;
+  right: 0px;
+  top: 0px;
+  width: 50px;
+}
+.liji {
+  display: block;
+  width: 100%;
+  height: 67px;
+  margin-top: 20px;
+}
+.footer {
+  padding: 20px;
+  padding-right: 20px;
+  width: 100%;
+  /* background-color: gray; */
+  height: 200px;
+  box-sizing: border-box;
+}
+.auto {
+  /* background-color: yellow; */
+  height: 62.5px;
+  position: relative;
+  margin-top: 25px;
+}
+.auto1 {
+  color: rgb(136, 136, 136);
+  font-size: 18px;
+  line-height: 35px;
+  position: absolute;
+
   top: 15px;
 }
-.address {
-  width: 600px;
-  height: 250px;
+
+.auto2 {
+  color: rgb(95, 95, 95);
+  font-size: 17px;
+  font-weight: bold;
+  line-height: 4px;
+  margin-right: 8px;
+  width: 112px;
   position: relative;
+  left: 60px;
+  /* display: inline-block; */
+  width: 100%;
+  top: 24px;
+  /* margin-left: 60px; */
+  /* margin-top: 15px; */
+}
+.auto3 {
+  position: absolute;
+  right: 0px;
+  top: 6px;
+  width: 50px;
+}
+.address {
+  width: 100%;
+  height: 150px;
+  position: relative;
+  /* background-color: skyblue; */
+  box-sizing: border-box;
 }
 .address1 {
   color: rgb(136, 136, 136);
-  font-size: 23px;
+  font-size: 18px;
   line-height: 35px;
   position: absolute;
-  left: 30px;
   top: 15px;
 }
 
 .address2 {
   color: rgb(51, 51, 51);
-  font-size: 23px;
-  line-height: 35px;
-  margin-right: 8px;
-  width: 445px;
+  font-size: 17px;
   position: absolute;
-  left: 100px;
-  top: 15px;
+  left: 60px;
+  top: 24px;
 }
 .address3 {
   position: absolute;
-  right: 50px;
-  top: 15px;
-  width: 38.5px;
-  height: 38.5px;
+  right: 0px;
+  top: 8px;
+  width: 50px;
 }
 .address4 {
-  width: 96px;
-  height: 22.5px;
+  width: 80px;
+  height: 21px;
+  position: absolute;
+  left: 60px;
+  top: 60px;
 }
 .address5 {
   color: rgb(255, 27, 27);
-  font-size: 23px;
-  line-height: 37px;
+  font-size: 17px;
+  position: absolute;
+  left: 150px;
+  top: 60px;
 }
 
 .address6 {
   color: rgb(51, 51, 51);
-  font-size: 23px;
-  line-height: 37px;
-}
-.addressnn {
-  width: 400px;
-  height: 100px;
+  font-size: 17px;
   position: absolute;
-  left: 100px;
-  top: 50px;
-}
-.cart {
-  width: 550px;
-  margin-left: 30px;
-  height: 67px;
-}
-.cart1 {
-  width: 207px;
-  height: 67px;
-  font-size: 22.5px;
+  left: 200px;
+  top: 60px;
 }
 
-.footer {
-  color: rgb(51, 51, 51);
-  font-size: 30px;
-  line-height: 47px;
+.gouglu {
+  height: 120px;
+}
+.gouglu img {
+  width: 30px;
 }
 </style>

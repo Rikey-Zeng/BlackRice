@@ -177,13 +177,13 @@ export default {
       this.getcartlist(); //删除成功重新调用获取购物车列表接口
     },
 
-   async  onSubmit() {
+    async onSubmit() {
       if (this.selectgoods.length > 0) {
         //   console.log(111, this.$store.state); // 看一下vuex状态里面的数据有没有
         const receiver = this.$store.state.address.receiver;
         const regions = this.$store.state.address.regions;
         const address = this.$store.state.address.address;
-        console.log(receiver,regions,address);
+        console.log(receiver, regions, address);
         // 从vuex中拿到收货人信息
         if (!receiver && !regions && !address) {
           // 只要有一项不存在，就跳转到添加收货人页面
@@ -336,8 +336,8 @@ body {
   background-color: white;
   margin-top: 5px;
 }
-.a {
-  margin-top: 35px;
+.van-swipe-cell__wrapper .a {
+  margin-top: 30px;
 }
 .goods-info p:nth-child(1) {
   float: left;

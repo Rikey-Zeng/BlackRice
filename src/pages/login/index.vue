@@ -39,7 +39,7 @@
 
 <script>
 import { reqLogin } from "../../api/user";
-import { Notify } from "vant";
+import { Notify, Toast } from "vant";
 import { setToken } from "../../utils/auth";
 
 export default {
@@ -65,6 +65,8 @@ export default {
         // // vuex持久化
         localStorage.setItem("token", result.token);
         this.$router.push("/home");
+      } else {
+        Toast("请检查账号或密码或进行注册");
       }
     },
     zhuce() {
@@ -86,11 +88,18 @@ export default {
   components: {},
 };
 </script>
-<style scoped>
+<style>
+body {
+  background-color: white;
+}
 .center {
   width: 150px;
   height: 120px;
   margin: 40px auto;
   color: grey;
+}
+.center img {
+  width: 100%;
+  height: 100%;
 }
 </style>

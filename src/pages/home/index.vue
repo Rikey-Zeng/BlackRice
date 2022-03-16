@@ -329,6 +329,10 @@ export default {
   width: 100%;
   height: 85px;
 }
+
+.img_two img[data-v-5b685826] {
+  margin-left: 11px;
+}
 .sm_jingpin p {
   font-size: 13px;
   margin: 0;
