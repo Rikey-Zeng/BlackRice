@@ -18,8 +18,9 @@
           <img class="orders-img" :src="item.product.coverImg" alt="" />
           
           <div class="orders-info">
-            <p class="pad">{{ item.product.name }}</p>
-            <p class="pad">￥：{{ item.product.price }}</p>
+            <p>{{ item.product.name }}</p>
+            <span>￥{{ item.product.price }}</span>
+            <span>数量：{{ item.quantity }}件</span>
           </div>
           <template #right>
             <van-button
@@ -50,6 +51,8 @@
 
 <script>
 import { Toast } from 'vant';
+import { reqCartListAPI } from "../../api/cart";
+
 
 import { reqGetOrder,reqOrderlist } from "../../api/order";
 
@@ -67,9 +70,6 @@ export default {
      sumPrice() {
       // 过滤出选中的项
       return this.lists
-        .filter((item) => {
-          return item.checked;
-        })
         .reduce(function (pre, cur) {
           // pre 初始值, 或者计算结束后的返回值。
           // cur  上面函数返回的每一项
@@ -84,29 +84,56 @@ export default {
       this.$router.push("/cart");
     },
     // 
-    async getreqGetOrder() {
-      const result = await reqOrderlist();
+    // async getreqGetOrder() {
+    //   const result = await reqOrderlist();
+    //   console.log(result);
+    //   this.lists = result;
+    // },
+    async reqCartListAPI() {
+      const result = await reqCartListAPI();
       console.log(result);
       this.lists = result;
     },
     // 
-    async getreqGetOrder(id) {
-      const result = await reqGetOrder(id);
-      console.log(result);
-      this.list = result;
-    },
+    // async getreqGetOrder(id) {
+    //   const result = await reqGetOrder(id);
+    //   console.log(result);
+    //   this.list = result;
+    // },
     onSubmit(){
-      Toast("成功支付"+"sumPrice * 100"+"元！");
+      
+      Toast("支付成功!");
     },
     // 
     
     
   },
   created() {
-    this.getreqGetOrder();
+    // this.getreqGetOrder();
+    this.reqCartListAPI();
+
   },
   mounted() {},
   components: {},
 };
 </script>
-<style scoped></style>
+<style scoped>
+.order-list {
+  padding-bottom: 80px;
+}
+.orders {
+  display: flex;
+  height: 120px;
+  justify-content: space-around;
+  align-items: center;
+  margin-bottom: 20px;
+}
+.orders-img {
+  width: 80px;
+  height: 80px;
+}
+.orders-info {
+  flex: 1;
+}
+
+</style>

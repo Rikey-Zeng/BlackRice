@@ -2,7 +2,7 @@ import Vue from "vue";
 import VueRouter from "vue-router";
 Vue.use(VueRouter);
 const router = new VueRouter({
-  mode: "",
+  mode: "history",
   routes: [
     {
       path: "/",
@@ -21,6 +21,14 @@ const router = new VueRouter({
         showFooter: true,
       },
       component: () => import("../pages/cart"),
+    },
+    {
+      path: "/address",
+      name: "Address",
+      meta: {
+        showFooter: false,
+      },
+      component: () => import("../pages/address"),
     },
     {
       path: "/mine",
