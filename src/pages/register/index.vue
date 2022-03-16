@@ -30,8 +30,8 @@
       />
     </van-popup>
 
-    <van-uploader :after-read="afterRead" />
-    <img v-if="imgurl" :src="imgurl" alt="" />
+    <!-- <van-uploader :after-read="afterRead" />
+    <img v-if="imgurl" :src="imgurl" alt="" /> -->
     <van-form @submit="onSubmit">
       <van-field
         v-model="username"
@@ -48,7 +48,7 @@
         placeholder="密码"
         :rules="[{ required: true, message: '请填写密码' }]"
       />
-      <div style="margin: 16px">
+      <div style="margin: 33px; width: 350px">
         <van-button round block type="info" native-type="submit"
           >提交</van-button
         >
@@ -148,11 +148,21 @@ export default {
   components: {},
 };
 </script>
-<style >
+<style>
+.van-button--info {
+  height: 45px;
+}
 .center {
   color: grey;
   width: 150px;
   margin: 0 auto;
+}
+.van-cell {
+  border: #0b84ff 1px solid;
+  width: 349px;
+  height: 55px;
+  border-radius: 15px;
+  line-height: 35px;
 }
 h1 {
   font-size: 30px;
@@ -172,5 +182,8 @@ h1 {
 img {
   width: 220px;
   height: 220px;
+}
+.inp1 {
+  margin: 20px 10px 0 40px;
 }
 </style>

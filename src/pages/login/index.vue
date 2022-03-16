@@ -88,11 +88,18 @@ export default {
   components: {},
 };
 </script>
-<style scoped>
+<style>
+body {
+  background-color: white;
+}
 .center {
   width: 150px;
   height: 120px;
   margin: 40px auto;
   color: grey;
+}
+.center img {
+  width: 100%;
+  height: 100%;
 }
 </style>
