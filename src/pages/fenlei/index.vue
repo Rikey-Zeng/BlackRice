@@ -125,7 +125,7 @@ body {
   float: right;
   color: #a2b0b7;
   margin-top: 17px;
-  margin-right: 34px;
+  margin-right: 44px;
 }
 .colo {
   color: red;
@@ -198,5 +198,6 @@ body {
 
 .name {
   margin-left: 100px;
+  font-size: 20px;
 }
 </style>

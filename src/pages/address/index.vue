@@ -1,62 +1,85 @@
 <template>
-    <div class='address'>
-      <van-address-list
-        v-model="chosenAddressId"
-        :list="list"
-        default-tag-text="默认"
-        @add="onAdd"
-        @edit="onEdit"
-       
-      />
-      <p @click="aa">aa</p>
-    </div>
+  <div class="address">
+    <van-nav-bar
+      title="收货地址"
+      left-text="返回"
+      left-arrow
+      @click-left="onClickLeft"
+    />
+    <van-address-list
+      v-model="chosenAddressId"
+      :list="list"
+      default-tag-text=""
+      @add="getadd"
+      @edit="getiii"
+    />
+  </div>
 </template>
 
 <script>
-import { Toast } from 'vant';
-
-// import {mapState } from "vuex";
+import { reqaddres } from "../../api/product";
+import { updataOrdersAPI } from "../../api/user";
 export default {
-    
-    data() {
-        
-        return {
-            // chosenAddressId: '1',
-              list: [
-                {
-                  id: '1',
-                  name: this.$store.state.address.receiver,
-                  address: this.$store.state.address.regions,
-                  isDefault: true,
-                },
-                
-              ],
+  data() {
+    return {
+      chosenAddressId: "",
+      list: [],
+      loading: false,
+      finished: false,
+      finishedtext: "没有更多了",
+    };
+  },
+  computed: {},
+  watch: {},
+
+  methods: {
+    // onLoad() {
+    //   // this.getmsg();
+    // },
+    async getadd() {
+      this.$router.push("/addressnew");
+    },
+    async getmsg() {
+      // this.loading = true;
+      const result = await reqaddres();
+      if (result.addresses != 0) {
+        this.finishedtext = "";
+      }
+      this.loading = false;
+      console.log(result);
+      result.addresses.forEach((item, index) => {
+        this.chosenAddressId = index;
+        console.log(item);
+        const arr = {
+          id: item._id,
+          name: item.receiver,
+          tel: item.mobile,
+          address: item.address,
+          isDefault: true,
         };
+
+        // console.log(arr);
+        this.list.push(arr);
+        // console.log(this.list);
+      });
     },
-    computed: {
+    getiii(item) {
+      console.log(item.id);
+      this.$router.push("/addressdel/" + item.id);
     },
-    watch: {},
-    
-    methods: {
-         onAdd() {
-            this.$router.push('/addressnew')
-          },
-          onEdit(item, index) {
-            Toast('编辑地址:' + index);
-          },
-          aa(){
-            console.log(this.$store.state.address.receiver,"===");
-          }
+    onClickLeft() {
+      this.$router.push("/order");
     },
-    created() {
-        
-    },
-    mounted() {
-        
-    },
-    components: {},
-    }
+  },
+  created() {},
+  mounted() {
+    this.getmsg();
+  },
+  components: {},
+};
 </script>
 <style scoped>
-    
+.van-address-item__name {
+  font-size: 20px;
+}
 </style>

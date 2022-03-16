@@ -52,4 +52,24 @@ export const post = (url, data) => instance.post(url, data);
 // 封装delete请求
 export const del = (url, params) => instance.delete(url, { params });
 
+//修改
+// export const put = (url, params) => instance.put(url, { params });
+
+export function put(url, params) {
+  return new Promise((resolve, reject) => {
+    instance
+      .put(url, params)
+      .then((res) => {
+        resolve(res.data);
+        // Loading.service(true).close();
+        // Message({message: '请求成功', type: 'success'});
+      })
+      .catch((err) => {
+        reject(err.data);
+        // Loading.service(true).close();
+        // Message({message: '加载失败', type: 'error'});
+      });
+  });
+}
+
 export default instance;

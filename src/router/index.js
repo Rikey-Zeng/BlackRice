@@ -113,6 +113,14 @@ const router = new VueRouter({
       },
       component: () => import("../pages/addressnew"),
     },
+    {
+      path: "/addressdel/:id",
+      name: "Addressdel",
+      meta: {
+        showFooter: false,
+      },
+      component: () => import("../pages/addressdel"),
+    },
   ],
 });
 export default router;
