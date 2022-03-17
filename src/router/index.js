@@ -58,7 +58,7 @@ const router = new VueRouter({
       path: "/order",
       name: "Order",
       meta: {
-        showFooter: true,
+        showFooter: false,
       },
       component: () => import("../pages/order"),
     },

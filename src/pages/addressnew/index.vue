@@ -12,7 +12,6 @@
       :area-columns-placeholder="['请选择', '请选择', '请选择']"
       @save="onSave"
       @delete="onDelete"
-      @change-detail="onChangeDetail"
     />
   </div>
 </template>
@@ -20,7 +19,7 @@
 <script>
 import { Toast } from "vant";
 import { areaList } from "@vant/area-data";
-import { reqaddresses } from "../../api/user";
+import { reqAddAddress } from "../../api/user";
 export default {
   data() {
     return {
@@ -49,7 +48,7 @@ export default {
 
   methods: {
     async onSave(content) {
-      const result = await reqaddresses({
+      const result = await reqAddAddress({
         id: 1,
         receiver: content.name,
         mobile: content.tel,
@@ -80,5 +79,4 @@ p {
   line-height: 60px;
   font-size: 20px;
 }
-
 </style>

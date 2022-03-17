@@ -69,7 +69,7 @@ export default {
       this.tela.mobile = data.tel;
       this.tela.regions = data.province + "-" + data.city + "-" + data.county;
       this.tela.address = data.addressDetail;
-      this.tela.idDefault = data.isDefault;
+      this.tela.isDefault = data.isDefault;
       // console.log(this.tela.idDefault);
       console.log(11111, this.tela);
       const params = await updataOrdersAPI(id, this.tela); //收货地址修改

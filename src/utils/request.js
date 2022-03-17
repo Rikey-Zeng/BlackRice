@@ -23,17 +23,16 @@ instance.interceptors.request.use(
 
 // 响应拦截
 instance.interceptors.response.use(
-
   function (response) {
     return response.data;
-    console.log(response)
+    console.log(response);
   },
   async function (error) {
     const { status } = await error.response;
     if (status === 401) {
       Notify({ type: "warning", message: "未授权，请先登录" });
       // 直接打回登录页面
-      window.location.href = "#/login";
+      window.location.href = "/login";
     }
     return Promise.reject(error);
   }
@@ -79,5 +78,3 @@ export const put = (url, data) => instance.put(url, data);
 //   });
 // }
 export default instance;
-
-

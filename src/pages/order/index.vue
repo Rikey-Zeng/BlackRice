@@ -1,5 +1,11 @@
 <template>
   <div class="orderlist">
+    <van-nav-bar
+      title="我的订单"
+      left-text="返回"
+      left-arrow
+      @click-left="onClickLeft"
+    />
     <van-list
       v-model="loading"
       :finished="finished"
@@ -19,7 +25,7 @@
             <p>姓名：{{ item.receiver }}</p>
             <p>电话{{ item.regions }}</p>
             <p>详细地址：{{ item.address }}</p>
-            <span>总价{{ item.price }}</span>
+            <div class="a">总价{{ item.price }}</div>
           </span>
           <span class="orddel" v-if="item.checked" @click="del(item._id, index)"
             >删除</span
@@ -88,6 +94,9 @@ export default {
   watch: {},
 
   methods: {
+    onClickLeft() {
+      this.$router.push("/home");
+    },
     // 单个删除
     async del(id, index) {
       console.log(id);
@@ -133,9 +142,15 @@ export default {
   components: {},
 };
 </script>
-<style>
+<style scoped>
+body {
+  background-color: gainsboro;
+}
 .ordli {
   display: flex;
+  background-color: white;
+  margin-top: 5px;
+  height: 120px;
 }
 .dibu {
   height: 30px;
@@ -149,5 +164,25 @@ export default {
 .orddel {
   display: flex;
   align-items: flex-end;
+}
+.checkbox {
+  margin-top: -10px;
+  margin-left: 10px;
+}
+span {
+  float: left;
+  display: block;
+  margin: 10px;
+  line-height: 25px;
+  margin-left: 20px;
+}
+.van-icon-delete-o {
+  margin-top: 5px;
+  font-size: 20px;
+  margin-left: 5px;
+}
+.a {
+  font-size: 18px;
+  color: orangered;
 }
 </style>
