@@ -17,8 +17,8 @@
           <!-- <span @click="ord(item._id)"> -->
           <span>
             <p>姓名：{{ item.receiver }}</p>
-            <p>电话{{item.regions }}</p>
-            <p>详细地址：{{item.address }}</p>
+            <p>电话{{ item.regions }}</p>
+            <p>详细地址：{{ item.address }}</p>
             <span>总价{{ item.price }}</span>
           </span>
           <span class="orddel" v-if="item.checked" @click="del(item._id)"
@@ -36,7 +36,7 @@
 </template>
 
 <script>
-import {reqOrderslist, reqDelmanydel, reqDelmanydels } from "../../api/order";
+import { reqOrderslist, reqDelmanydel, reqDelmanydels } from "../../api/order";
 
 export default {
   data() {
@@ -89,32 +89,31 @@ export default {
 
   methods: {
     // 单个删除
-async del(id){
-  // console.log(id);
-      const result = await reqDelmanydel({id});
-      console.log(id,result);
-      if (result.deletedCount>0) {
-       Toast('删除成功');
+    async del(id) {
+      console.log(id);
+      const result = await reqDelmanydel(id);
+      console.log(id, result);
+      if (result.deletedCount > 0) {
+        Toast("删除成功");
       }
-       this.initOrders();//删除成功重新调用获取列表接口
- },
+      // this.initress(); //删除成功重新调用获取列表接口
+    },
 
-
- // 批量删除
-async delall(){
+    // 批量删除
+    async delall() {
       const ids = [];
-    //   遍历出选中的项
-     this.selectgoods.forEach((item) => {
+      //   遍历出选中的项
+      this.selectgoods.forEach((item) => {
         ids.push(item.id);
-      }); 
+      });
       // 删除选中的项
-      const result = await  reqDelmanydel({"ids":ids});
-      if (result.deletedCount>0) {
-       Toast('删除成功');
+      const result = await reqDelmanydel({ ids: ids });
+      if (result.deletedCount > 0) {
+        Toast("删除成功");
       }
-       this.initress();//删除成功重新调用获取列表接口
- },
-  //列出所有
+      // this.initress(); //删除成功重新调用获取列表接口
+    },
+    //列出所有
     async initress() {
       this.loading = true; // 开启加载
       const result = await reqOrderslist(this.page);
@@ -132,19 +131,16 @@ async delall(){
     onLoad() {
       this.initress(); // 在created里面调用接口
     },
-    
-    // ord(id) {
-    //   this.$router.push("/orderid/" + id);
-    // },
-  
   },
 
-  created() {},
+  created() {
+    this.initress();
+  },
   mounted() {},
   components: {},
 };
 </script>
-<style >
+<style>
 .ordli {
   display: flex;
 }

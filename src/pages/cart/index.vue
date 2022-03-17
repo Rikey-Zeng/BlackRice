@@ -18,7 +18,7 @@
           <div class="goods-info">
             <p class="pad">{{ item.product.name }}</p>
             <p class="pad">{{ item.product.price }}元</p>
-            
+
             <div class="numcart">
               <van-icon name="plus" @click="updataPro(item.product._id, 1)" />
               <input
@@ -162,9 +162,9 @@ export default {
   watch: {},
 
   methods: {
-    // 
+    //
     async delall() {
-      console.log(3456,this.selectgoods);
+      console.log(3456, this.selectgoods);
       const ids = [];
       //   遍历出选中的项
       this.selectgoods.forEach((item) => {
@@ -179,27 +179,28 @@ export default {
     },
 
     async onSubmit() {
-        //  console.log(333,localStorage.getItem('address')); // 看一下vuex状态里面的数据有没有
-      const xinxi = JSON.parse(localStorage.getItem('address'));
-      console.log(2222,xinxi);
+      //  console.log(333,localStorage.getItem('address')); // 看一下vuex状态里面的数据有没有
+      const xinxi = JSON.parse(localStorage.getItem("address"));
+      console.log(2222, xinxi);
       const receiver = xinxi.receiver;
       const regions = xinxi.regions;
       const address = xinxi.address;
-      console.log(2222222222,receiver,regions,address);
+      console.log(2222222222, receiver, regions, address);
       if (xinxi) {
-         // 如果存在收货人，跳转到订单页面
+        // 如果存在收货人，跳转到订单页面
         const orderDetails = this.selectgoods;
-        const result = await reqSaveOrderAPI( {receiver,
+        const result = await reqSaveOrderAPI({
+          receiver,
           regions,
           address,
-          orderDetails,});
-        console.log("订单生成成功");        
+          orderDetails,
+        });
+        console.log("订单生成成功");
         this.$router.push("/order");
       } else {
-      
-         // 不存在，就跳转到添加收货人页面
+        // 不存在，就跳转到添加收货人页面
         this.$router.push("/address");
-    }
+      }
     },
     async reqCartListAPI() {
       const result = await reqCartListAPI();
@@ -217,6 +218,7 @@ export default {
     },
     async del(id) {
       const result = await reqDelcartAPI(id);
+      console.log(id, id);
       this.reqCartListAPI();
     },
     onClickLeft() {
