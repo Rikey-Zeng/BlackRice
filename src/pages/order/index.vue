@@ -21,7 +21,7 @@
             <p>详细地址：{{ item.address }}</p>
             <span>总价{{ item.price }}</span>
           </span>
-          <span class="orddel" v-if="item.checked" @click="del(item._id)"
+          <span class="orddel" v-if="item.checked" @click="del(item._id, index)"
             >删除</span
           >
         </li>
@@ -89,28 +89,21 @@ export default {
 
   methods: {
     // 单个删除
-    async del(id) {
+    async del(id, index) {
       console.log(id);
       const result = await reqDelmanydel(id);
       console.log(id, result);
-      if (result.deletedCount > 0) {
-        Toast("删除成功");
-      }
+      this.list.splice(index, 1);
       // this.initress(); //删除成功重新调用获取列表接口
     },
 
     // 批量删除
     async delall() {
-      const ids = [];
-      //   遍历出选中的项
-      this.selectgoods.forEach((item) => {
-        ids.push(item.id);
-      });
-      // 删除选中的项
-      const result = await reqDelmanydel({ ids: ids });
-      if (result.deletedCount > 0) {
-        Toast("删除成功");
-      }
+      // // 删除选中的项
+      const result = await reqDelmanydels(this.selectgoods);
+      console.log("result", result);
+      this.list = [];
+
       // this.initress(); //删除成功重新调用获取列表接口
     },
     //列出所有
