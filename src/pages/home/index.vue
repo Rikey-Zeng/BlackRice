@@ -185,6 +185,7 @@
 </template>
 
 <script>
+import { Toast } from 'vant';
 import {
   reqProducts, //获取商品接口
   reqBanners, //轮播图
@@ -203,8 +204,9 @@ export default {
     // 轮播图
     async initBanners() {
       const result = await reqBanners();
+      console.log(result);
       this.banners = result.products;
-      // console.log( 1111,this.banners);
+      console.log( 4444,this.banners);
     },
 
     // 商品接口

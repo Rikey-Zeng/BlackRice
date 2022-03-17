@@ -144,12 +144,13 @@ export default {
     },
     async loadDetail(id) {
       const result = await reqProductById(id);
-      console.log(result);
+      // console.log(result);
       this.detail = result;
     },
     async addcart(id) {
       const result = await addToCart(id);
-      console.log(result);
+       console.log(result);
+     
       //    添加成功  ，跳转到购物车页面
       this.$router.push("/cart");
     },

@@ -1,24 +1,20 @@
-import Vue from 'vue'
+import Vue from "vue";
 
-import Vuex from 'vuex'
-import address from './address/index'
+import Vuex from "vuex";
+import address from "./address";
 
-Vue.use(Vuex)
+Vue.use(Vuex);
 
 const store = new Vuex.Store({
-  actions: {},
-  mutations: {
-    changToken(state, payload) {
-      state.token = payload
+    state: {
+        token: "",
     },
-  },
-  state: {
-    token: '',
-  },
-  getters: {},
-  modules: {
-    address,
-  },
-})
+    mutations: {
+        changeToken(state, payload) {
+            state.token = payload;
+        },
+    },
+    modules: { address },
+});
 
-export default store
+export default store;

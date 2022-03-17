@@ -1,139 +1,164 @@
 <template>
-  <div class="order">
-    <van-nav-bar
-      title="确认订单"
-      left-text=""
-      right-text=""
-      left-arrow
-      @click-left="onClickLeft"
-    />
-
-    <van-cell title="请添加收货地址" is-link to="address" />
-
-    <div class="order-list" v-if="lists.length > 0">
-     
-      <div class="orders" v-for="(item, index) in lists" :key="item._id + index">
-        <van-swipe-cell>
-          
-          <img class="orders-img" :src="item.product.coverImg" alt="" />
-          
-          <div class="orders-info">
-            <p>{{ item.product.name }}</p>
-            <span>￥{{ item.product.price }}</span>
-            <span>数量：{{ item.quantity }}件</span>
-          </div>
-          <template #right>
-            <van-button
-              square
-              type="danger"
-              text="删除"
-              class="delete-button"
-              @click="del(item._id)"
-            />
-          </template>
-        </van-swipe-cell>
-      </div>
-
-    <van-submit-bar 
-      :price="sumPrice * 100" 
-      button-text="提交订单" 
-      suffix-label="免运费"
-      tip="你的收货地址不支持同城送, 我们已为你推荐快递"
-      tip-icon="info-o"
-      @submit="onSubmit">
-    </van-submit-bar>
-
-    
+  <div class="orderlist">
+    <van-list
+      v-model="loading"
+      :finished="finished"
+      finished-text="没有更多了"
+      @load="onLoad"
+    >
+      <ul>
+        <li
+          v-for="(item, index) in list"
+          :key="index"
+          :title="item"
+          class="ordli"
+        >
+          <van-checkbox class="checkbox" v-model="item.checked" />
+          <!-- <span @click="ord(item._id)"> -->
+          <span>
+            <p>姓名：{{ item.receiver }}</p>
+            <p>电话{{item.regions }}</p>
+            <p>详细地址：{{item.address }}</p>
+            <span>总价{{ item.price }}</span>
+          </span>
+          <span class="orddel" v-if="item.checked" @click="del(item._id)"
+            >删除</span
+          >
+        </li>
+      </ul>
+    </van-list>
+    <div class="dibu">
+      <!-- <button>删除</button> -->
+      <van-checkbox v-model="checked">全选</van-checkbox>
+      <van-icon name="delete-o" @click="delall" />
+    </div>
   </div>
-  </div>
-
 </template>
 
 <script>
-import { Toast } from 'vant';
-import { reqCartListAPI } from "../../api/cart";
-
-
-import { reqGetOrder,reqOrderlist } from "../../api/order";
+import {reqOrderslist, reqDelmanydel, reqDelmanydels } from "../../api/order";
 
 export default {
   data() {
     return {
-      list:[],
-      lists:[],
-
-      
+      rsslist: [],
+      list: [],
+      loading: false,
+      finished: false,
+      page: 1,
     };
-    
   },
   computed: {
-     sumPrice() {
-      // 过滤出选中的项
-      return this.lists
-        .reduce(function (pre, cur) {
-          // pre 初始值, 或者计算结束后的返回值。
-          // cur  上面函数返回的每一项
-          return (pre += cur.product.price * cur.quantity);
-        }, 0);
+    aa() {
+      return 123;
     },
+    // 获取选中的项,将来添加订单的时候需要这里的信息
+    selectgoods() {
+      var selectlist = [];
+      this.list.filter((item) => {
+        if (item.checked) {
+          // 如果选中了
+          selectlist.push(item._id);
+        }
+      });
+      return selectlist;
+    },
+    checked: {
+      // set表示设置值
+      set(flag) {
+        // console.log(111, flag);
+        // 动态给列表添加checked
+        this.list.map((item) => this.$set(item, "checked", flag)); // this.$set动态添加属性
+      },
+      // 表示最终返回值
+      get() {
+        if (this.list.length == 0) {
+          return false; // 如果没有数据的话(购物车中的数据被删除完了，返回false)
+        } else {
+          // 如果选中的商品的长度等于list的长度，说明全选
+          return (
+            this.list.length === this.list.filter((item) => item.checked).length
+          );
+        }
+      },
+    },
+    // 计算总价
   },
+
   watch: {},
 
   methods: {
-    onClickLeft() {
-      this.$router.push("/cart");
-    },
-    // 
-    // async getreqGetOrder() {
-    //   const result = await reqOrderlist();
-    //   console.log(result);
-    //   this.lists = result;
-    // },
-    async reqCartListAPI() {
-      const result = await reqCartListAPI();
-      console.log(result);
-      this.lists = result;
-    },
-    // 
-    // async getreqGetOrder(id) {
-    //   const result = await reqGetOrder(id);
-    //   console.log(result);
-    //   this.list = result;
-    // },
-    onSubmit(){
-      
-      Toast("支付成功!");
-    },
-    // 
-    
-    
-  },
-  created() {
-    // this.getreqGetOrder();
-    this.reqCartListAPI();
+    // 单个删除
+async del(id){
+  // console.log(id);
+      const result = await reqDelmanydel({id});
+      console.log(id,result);
+      if (result.deletedCount>0) {
+       Toast('删除成功');
+      }
+       this.initOrders();//删除成功重新调用获取列表接口
+ },
 
+
+ // 批量删除
+async delall(){
+      const ids = [];
+    //   遍历出选中的项
+     this.selectgoods.forEach((item) => {
+        ids.push(item.id);
+      }); 
+      // 删除选中的项
+      const result = await  reqDelmanydel({"ids":ids});
+      if (result.deletedCount>0) {
+       Toast('删除成功');
+      }
+       this.initress();//删除成功重新调用获取列表接口
+ },
+  //列出所有
+    async initress() {
+      this.loading = true; // 开启加载
+      const result = await reqOrderslist(this.page);
+      console.log("result", result);
+      this.loading = false; // 关闭加载
+      this.rsslist = [...this.rsslist, ...result.orders]; // 把新获取的数据加上前面的数据展示出来
+      this.list = this.rsslist;
+      if (result.orders.length < 10) {
+        // 说明是最后一页
+        this.finished = true; // 关闭
+      } else {
+        this.page++;
+      }
+    },
+    onLoad() {
+      this.initress(); // 在created里面调用接口
+    },
+    
+    // ord(id) {
+    //   this.$router.push("/orderid/" + id);
+    // },
+  
   },
+
+  created() {},
   mounted() {},
   components: {},
 };
 </script>
-<style scoped>
-.order-list {
-  padding-bottom: 80px;
-}
-.orders {
+<style >
+.ordli {
   display: flex;
-  height: 120px;
-  justify-content: space-around;
-  align-items: center;
-  margin-bottom: 20px;
 }
-.orders-img {
-  width: 80px;
-  height: 80px;
+.dibu {
+  height: 30px;
+  position: fixed;
+  bottom: 0;
 }
-.orders-info {
-  flex: 1;
+.dibu div {
+  display: flex;
+  float: left;
 }
-
+.orddel {
+  display: flex;
+  align-items: flex-end;
+}
 </style>
